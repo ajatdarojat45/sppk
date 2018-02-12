@@ -17,6 +17,10 @@
    {{-- autocomplete --}}
    <link rel="stylesheet" type="text/css" href="">
    <link href="{{ asset('autocomplete/jquery.ui.autocomplete.css') }}" rel="stylesheet">
+   {{-- summernote --}}
+   <link href="{{asset('inspinia/css/plugins/summernote/summernote.css')}}" rel="stylesheet">
+   <link href="{{asset('inspinia/css/plugins/summernote/summernote-bs3.css')}}" rel="stylesheet">
+
 
 </head>
 
@@ -65,13 +69,16 @@
                   <a href="{{route('employee/index')}}"><i class="fa fa-users"></i> <span class="nav-label">Employee</span></a>
                </li>
                <li>
-                  <a href="#"><i class="fa fa-file-pdf-o"></i> <span class="nav-label">Purchase Request</span></a>
+                  <a href="{{route('pr/index')}}"><i class="fa fa-file-pdf-o"></i> <span class="nav-label">Purchase Request</span></a>
                </li>
                <li>
-                  <a href="#"><i class="fa fa-credit-card"></i> <span class="nav-label">Invoice</span></a>
+                  <a href="{{route('invoice/index')}}"><i class="fa fa-credit-card"></i> <span class="nav-label">Invoice</span></a>
                </li>
                <li>
-                  <a href="#"><i class="fa fa-laptop"></i> <span class="nav-label">Computer</span></a>
+                  <a href="{{route('component/index')}}"><i class="fa fa-puzzle-piece"></i> <span class="nav-label">Component</span></a>
+               </li>
+               <li>
+                  <a href="{{route('computer/index')}}"><i class="fa fa-laptop"></i> <span class="nav-label">Computer</span></a>
                </li>
                <li>
                   <a href="#"><i class="fa fa-ticket"></i> <span class="nav-label">Ticket</span></a>
@@ -144,6 +151,14 @@
          });
      });
    </script>
+   <!-- SUMMERNOTE -->
+   <script src="{{asset('inspinia/js/plugins/summernote/summernote.min.js')}}"></script>
+   <script>
+      $(document).ready(function(){
+         $('.summernote').summernote();
+      });
+   </script>
+
    {{-- autocomplete --}}
    <script src="{{ asset('autocomplete/jquery-ui.min.js') }}"></script>
    {{-- <script type="text/javascript">

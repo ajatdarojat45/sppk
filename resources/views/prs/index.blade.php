@@ -29,7 +29,7 @@
                      <div class="btn-group pull-right">
                         {{-- {{ $banks->links() }} --}}
                      </div>
-                     <a class="btn btn-primary btn-sm" data-toggle="modal" href='#myModal'><i class="fa fa-plus-circle"></i> Add</a>
+                     <a class="btn btn-primary btn-sm" href='{{route('pr/create')}}'><i class="fa fa-plus-circle"></i> Add</a>
                      <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf-o"></i> Pdf</a>
                   </div><br>
                   <div class="table-responsive">
@@ -39,6 +39,10 @@
                                  <th style="text-align: center;">No.</th>
                                  <th style="text-align: center;">Code</th>
                                  <th style="text-align: center;">Name</th>
+                                 <th style="text-align: center;">Position</th>
+                                 <th style="text-align: center;">Duty</th>
+                                 <th style="text-align: center;">Department</th>
+                                 <th style="text-align: center;">Branch</th>
                                  <th style="text-align: center;">Stat</th>
                                  <th style="text-align: center;">Created at</th>
                                  <th style="text-align: center;">Action</th>
@@ -52,11 +56,27 @@
                               <tr class="read">
                                  <td class="text-center">{{ ++$no }}</td>
                                  <td class="text-left">{{ $pr->code }}</td>
-                                 <td class="text-left">{{ $pr->name }}</td>
-                                 <td class="text-left">{{ $pr->stat }}</td>
+                                 <td class="text-left">{{ $pr->mutation->employee->name }}</td>
+                                 <td class="text-center">{{ $pr->mutation->position->name }}</td>
+                                 <td class="text-center">{{ $pr->mutation->duty->name }}</td>
+                                 <td class="text-center">{{ $pr->mutation->department->name }}</td>
+                                 <td class="text-center">{{ $pr->mutation->branch->name }}</td>
+                                 <td class="text-center">
+                                    @if ($pr->stat == 0)
+                                       <span class="label label-danger">Waiting</span>
+                                    @else
+                                       <span class="label label-primary">Approve</span>
+                                    @endif
+                                 </td>
                                  <td class="text-center">{{ $pr->created_at }}</td>
                                  <td class="text-center">
-                                    <a href="{{route('duty/destroy', $duty->id)}}" class="btn btn-danger btn-sm btn-outline"><i class="fa fa-trash"></i> </a>
+                                    <a href="{{route('pr/detail', $pr->id)}}" class="btn btn-primary btn-sm btn-outline"><i class="fa fa-file"></i> </a>
+                                    @if ($pr->stat == 0)
+                                       <a href="{{route('pr/approve', $pr->id)}}" class="btn btn-danger btn-sm btn-outline"><i class="fa fa-toggle-off"></i> </a>
+                                    @else
+                                       <a href="{{route('duty/destroy', $pr->id)}}" class="btn btn-primary btn-sm btn-outline"><i class="fa fa-toggle-on"></i> </a>
+                                    @endif
+                                    <a href="{{route('duty/destroy', $pr->id)}}" class="btn btn-danger btn-sm btn-outline"><i class="fa fa-trash"></i> </a>
                                  </td>
                               </tr>
                               @endforeach

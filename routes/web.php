@@ -29,6 +29,13 @@ Route::get('/componentCategory/destroy/{id}', 'ComponentCategoryController@destr
 Route::get('/componentCategory/create', 'ComponentCategoryController@create')->name('componentCategory/create');
 Route::post('/componentCategory/store', 'ComponentCategoryController@store')->name('componentCategory/store');
 Route::get('/componentCategory/index', 'ComponentCategoryController@index')->name('componentCategory/index');
+// component
+Route::get('/component/create', 'ComponentController@create')->name('component/create');
+Route::post('/component/store', 'ComponentController@store')->name('component/store');
+Route::get('/component/index', 'ComponentController@index')->name('component/index');
+// computer
+Route::get('/computer/index', 'ComputerController@index')->name('computer/index');
+Route::post('/computer/store', 'ComputerController@store')->name('computer/store');
 // department
 Route::get('/department/destroy/{id}', 'DepartmentController@destroy')->name('department/destroy');
 Route::get('/department/create', 'DepartmentController@create')->name('department/create');
@@ -45,6 +52,10 @@ Route::get('/employee/{id}/detail', 'EmployeeController@detail')->name('employee
 Route::get('/employee/create', 'EmployeeController@create')->name('employee/create');
 Route::post('/employee/store', 'EmployeeController@store')->name('employee/store');
 Route::get('/employee/index', 'EmployeeController@index')->name('employee/index');
+// invoice
+Route::get('/invoice/{id}/destroy', 'InvoiceController@destroy')->name('invoice/destroy');
+Route::post('/invoice/store', 'InvoiceController@store')->name('invoice/store');
+Route::get('/invoice/index', 'InvoiceController@index')->name('invoice/index');
 // mutation
 Route::post('/mutation/store', 'MutationController@store')->name('mutation/store');
 // position
@@ -53,5 +64,8 @@ Route::get('/position/create', 'PositionController@create')->name('position/crea
 Route::post('/position/store', 'PositionController@store')->name('position/store');
 Route::get('/position/index', 'PositionController@index')->name('position/index');
 // pr
+Route::get('/pr/{id}/approve', 'PrController@approve')->name('pr/approve');
+Route::get('/pr/{id}/detail', 'PrController@detail')->name('pr/detail');
+Route::get('/pr/create', 'PrController@create')->name('pr/create');
 Route::post('/pr/store', 'PrController@store')->name('pr/store');
 Route::get('/pr/index', 'PrController@index')->name('pr/index');
