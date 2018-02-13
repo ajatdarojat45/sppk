@@ -54,7 +54,7 @@
                                  <td class="text-left">{{ $computer->name }}</td>
                                  <td class="text-center">{{ $computer->created_at }}</td>
                                  <td class="text-center">
-                                    <a href="{{route('branch/destroy', $computer->id)}}" class="btn btn-primary btn-sm btn-outline"><i class="fa fa-file"></i> </a>
+                                    <a href="{{route('computer/detail', $computer->id)}}" class="btn btn-primary btn-sm btn-outline"><i class="fa fa-file"></i> </a>
                                     <a href="{{route('branch/destroy', $computer->id)}}" class="btn btn-danger btn-sm btn-outline"><i class="fa fa-trash"></i> </a>
                                  </td>
                               </tr>

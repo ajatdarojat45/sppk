@@ -19,7 +19,7 @@ class Employee extends Model
 
    public function mutations()
    {
-      return $this->hasMany(Mutation::class);
+      return $this->hasMany(Mutation::class)->orderBy('date', 'desc');
    }
 
    public function mutationActive()

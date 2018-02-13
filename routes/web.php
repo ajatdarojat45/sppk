@@ -33,9 +33,14 @@ Route::get('/componentCategory/index', 'ComponentCategoryController@index')->nam
 Route::get('/component/create', 'ComponentController@create')->name('component/create');
 Route::post('/component/store', 'ComponentController@store')->name('component/store');
 Route::get('/component/index', 'ComponentController@index')->name('component/index');
+// component computer
+Route::get('/componentComputer/store/{component}/{computer}', 'ComponentComputerController@store')->name('componentComputer/store');
 // computer
 Route::get('/computer/index', 'ComputerController@index')->name('computer/index');
 Route::post('/computer/store', 'ComputerController@store')->name('computer/store');
+Route::get('/computer/{id}/detail', 'ComputerController@detail')->name('computer/detail');
+// computer mutation
+Route::get('/computerMutation/store/{mutation}/{computer}', 'ComputerMutationController@store')->name('computerMutation/store');
 // department
 Route::get('/department/destroy/{id}', 'DepartmentController@destroy')->name('department/destroy');
 Route::get('/department/create', 'DepartmentController@create')->name('department/create');

@@ -63,6 +63,7 @@
                      <li class=""><a data-toggle="tab" href="#computer"> Computer</a></li>
                   </ul>
                   <div class="tab-content">
+                     {{-- mutation --}}
                      <div id="mutation" class="tab-pane active">
                         <div class="mail-tools tooltip-demo m-t-md">
                            <div class="btn-group pull-right">
@@ -113,8 +114,52 @@
                             </table>
                         </div>
                      </div>
+                     {{-- computer --}}
                      <div id="computer" class="tab-pane">
-                        computer
+                        <div class="mail-tools tooltip-demo m-t-md">
+                           <div class="btn-group pull-right">
+                              {{-- {{ $banks->links() }} --}}
+                           </div>
+                           <a class="btn btn-primary btn-sm" data-toggle="modal" href="#mutationModal"><i class="fa fa-plus-circle"></i> Add</a>
+                           <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf-o"></i> Pdf</a>
+                        </div><br>
+                        <div class="table-responsive">
+                            <table id="example3" class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                       <th style="text-align: center;">No.</th>
+                                       <th style="text-align: center;">Code</th>
+                                       <th style="text-align: center;">Name</th>
+                                       <th style="text-align: center;">Position</th>
+                                       <th style="text-align: center;">Duty</th>
+                                       <th style="text-align: center;">Department</th>
+                                       <th style="text-align: center;">Branch</th>
+                                       <th style="text-align: center;">Date</th>
+                                       <th style="text-align: center;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                    $no = 0;
+                                    @endphp
+                                    @foreach ($computers as $computer)
+                                    <tr class="read">
+                                       <td class="text-center">{{ ++$no }}</td>
+                                       <td class="text-center">{{ $computer->computer->code }}</td>
+                                       <td class="text-center">{{ $computer->computer->name }}</td>
+                                       <td class="text-center">{{ $computer->mutation->position->name }}</td>
+                                       <td class="text-center">{{ $computer->mutation->duty->name }}</td>
+                                       <td class="text-center">{{ $computer->mutation->department->name }}</td>
+                                       <td class="text-center">{{ $computer->mutation->branch->name }}</td>
+                                       <td class="text-center">{{ $computer->date }}</td>
+                                       <td class="text-center">
+                                          <a href="{{route('employee/destroy', $employee->id)}}" class="btn btn-danger btn-sm btn-outline"><i class="fa fa-trash"></i> </a>
+                                       </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                      </div>
                   </div>
                </div>

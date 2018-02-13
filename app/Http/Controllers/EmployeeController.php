@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ComputerMutation;
 use App\Department;
 use App\Position;
 use App\Religion;
@@ -56,7 +57,9 @@ class EmployeeController extends Controller
       $branches      = Branch::orderBy('name', 'asc')->get();
       $duties        = Duty::orderBy('name', 'asc')->get();
       $employee      = Employee::findOrFail($id);
+      $computers     = ComputerMutation::whereHas('mutation', function($query) use ($id) {
+          $query->where('employee_id', $id);})->get();
 
-      return view('employees.detail', compact('departments', 'positions', 'branches', 'duties', 'employee'));
+      return view('employees.detail', compact('departments', 'positions', 'branches', 'duties', 'employee', 'computers'));
    }
 }

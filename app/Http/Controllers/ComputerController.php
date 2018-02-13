@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mutation;
 use App\Computer;
+use App\Component;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ComputerController extends Controller
@@ -26,5 +29,14 @@ class ComputerController extends Controller
       ]);
 
       return back()->with('success', 'Data saved');
+   }
+
+   public function detail($id)
+   {
+      $mutations = MUtation::whereRaw('id in (select max(id) from mutations where date < now() group by (employee_id))')->get();
+      $components = Component::doesntHave('componentComputer')->get();
+      $computer = Computer::findOrFail($id);
+
+      return view('computers.detail', compact('computer', 'components', 'mutations'));
    }
 }

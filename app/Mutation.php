@@ -51,4 +51,10 @@ class Mutation extends Model
          return '<span class="label label-danger">Resign</span>';
       }
    }
+
+   public function computerMutations()
+   {
+      return $this->hasMany(ComputerMutation::class);
+   }
+   
 }

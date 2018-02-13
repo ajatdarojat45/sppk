@@ -23,4 +23,14 @@ class Component extends Model
    {
       return $this->belongsTo(InvoicePr::class);
    }
+
+   public function componentComputer()
+   {
+      return $this->hasOne(ComponentComputer::class);
+   }
+
+   public function componentComputerHistories()
+   {
+      return $this->hasMany(ComponentComputerHistories::class);
+   }
 }
