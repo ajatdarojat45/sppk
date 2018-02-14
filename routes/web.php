@@ -74,3 +74,9 @@ Route::get('/pr/{id}/detail', 'PrController@detail')->name('pr/detail');
 Route::get('/pr/create', 'PrController@create')->name('pr/create');
 Route::post('/pr/store', 'PrController@store')->name('pr/store');
 Route::get('/pr/index', 'PrController@index')->name('pr/index');
+// ticket
+Route::get('/ticket/destroy/{id}', 'TicketController@destroy')->name('ticket/destroy');
+Route::get('/ticket/create', 'TicketController@create')->name('ticket/create');
+Route::post('/ticket/store', 'TicketController@store')->name('ticket/store');
+Route::get('/ticket/index', 'TicketController@index')->name('ticket/index');
+Route::get('/ticket/process/{id}', 'TicketController@process')->name('ticket/process');

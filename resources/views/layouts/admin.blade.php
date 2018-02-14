@@ -20,8 +20,8 @@
    {{-- summernote --}}
    <link href="{{asset('inspinia/css/plugins/summernote/summernote.css')}}" rel="stylesheet">
    <link href="{{asset('inspinia/css/plugins/summernote/summernote-bs3.css')}}" rel="stylesheet">
-
-
+   <!-- Sweet Alert -->
+   <link href="{{ asset('inspinia/css/plugins/sweetalert/sweetalert.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -81,7 +81,7 @@
                   <a href="{{route('computer/index')}}"><i class="fa fa-laptop"></i> <span class="nav-label">Computer</span></a>
                </li>
                <li>
-                  <a href="#"><i class="fa fa-ticket"></i> <span class="nav-label">Ticket</span></a>
+                  <a href="{{route('ticket/index')}}"><i class="fa fa-ticket"></i> <span class="nav-label">Ticket</span></a>
                </li>
             </ul>
          </div>
@@ -158,7 +158,27 @@
          $('.summernote').summernote();
       });
    </script>
-
+   <!-- Sweet alert -->
+   <script src="{{ asset('inspinia/js/plugins/sweetalert/sweetalert.min.js') }}"></script>
+   <script>
+     jQuery(document).ready(function($){
+         $('.confirm').on('click',function(){
+             var getLink = $(this).attr('href');
+             swal({
+                  title: "Are you sure?",
+                  text: "do this action",
+                  type: "warning",
+                  html: true,
+                  confirmButtonColor: '#d9534f',
+                  showCancelButton: true,
+                  },
+                  function(){
+                  window.location.href = getLink
+                 });
+             return false;
+         });
+     });
+   </script>
    {{-- autocomplete --}}
    <script src="{{ asset('autocomplete/jquery-ui.min.js') }}"></script>
    {{-- <script type="text/javascript">
