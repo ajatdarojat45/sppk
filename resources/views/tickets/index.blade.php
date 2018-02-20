@@ -22,6 +22,12 @@
           <strong>Success!</strong> {{session('success') }}
       </div>
       @endif
+      @if (session('warning'))
+      <div class="alert alert-warning">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <strong>Warning!</strong> {{session('warning') }}
+      </div>
+      @endif
       <div class="row">
           <div class="col-lg-12 animated fadeInRight">
               <div class="ibox-content">

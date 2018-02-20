@@ -37,7 +37,7 @@
                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
                            <span class="block m-t-xs"> <strong class="font-bold">{{Auth::user()->name}}</strong></span>
-                           <span class="text-muted text-xs block">{{Auth::user()->mutationActive()->position->name}} <b class="caret"></b></span>
+                           <span class="text-muted text-xs block">{{Auth::user()->mutationActive()->position->name}} - {{Auth::user()->mutationActive()->department->name}} <b class="caret"></b></span>
                         </span>
                      </a>
                      <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -45,7 +45,14 @@
                         <li><a href="contacts.html">Contacts</a></li>
                         <li><a href="mailbox.html">Mailbox</a></li>
                         <li class="divider"></li>
-                        <li><a href="login.html">Logout</a></li>
+                        <li>
+                           <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                              Logout
+                           </a>
+                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              {{ csrf_field() }}
+                           </form>
+                        </li>
                      </ul>
                   </div>
                   <div class="logo-element">
@@ -86,10 +93,10 @@
                      <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
                   </li>
                   <li>
-                     <a href="login.html">
-                        <i class="fa fa-sign-out"></i> Log out
-                    </a>
-                  </li>
+                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fa fa-sign-out"></i> Logout
+                     </a>
+                </li>
                </ul>
             </nav>
          </div>
