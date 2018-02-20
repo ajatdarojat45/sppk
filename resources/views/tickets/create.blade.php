@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends(Auth::user()->mutationActive()->department->id == 1 ? 'layouts.admin' : 'layouts.employee')
 @section('title')
    Ticket Create - FIMZ Cemerlang Bangsa
 @endsection
@@ -8,7 +8,7 @@
          <h2>Member</h2>
          <ol class="breadcrumb">
             <li><a href="#">Dashboard</a></li>
-            <li><a href="{{route('ticket/index')}}">Ticket</a></li>
+            <li><a href="{{route('ticket/index', 'new')}}">Ticket</a></li>
             <li class="active"><strong>Create</strong></li>
          </ol>
       </div>

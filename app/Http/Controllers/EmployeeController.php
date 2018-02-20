@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+
 use Illuminate\Http\Request;
 use App\ComputerMutation;
 use App\Department;
@@ -45,6 +49,8 @@ class EmployeeController extends Controller
          'blood'           => $request->blood,
          'sex'             => $request->sex,
          'religion_id'     => $request->religion,
+         'email'           => 'test@gmail.com',
+         'password'        => bcrypt('123123'),
       ]);
 
       return back()->with('success', 'Data saved');
@@ -61,5 +67,10 @@ class EmployeeController extends Controller
           $query->where('employee_id', $id);})->get();
 
       return view('employees.detail', compact('departments', 'positions', 'branches', 'duties', 'employee', 'computers'));
+   }
+
+   public function loginForm()
+   {
+      return view('employees.login');
    }
 }

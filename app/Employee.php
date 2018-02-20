@@ -2,15 +2,24 @@
 
 namespace App;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
+class Employee extends Authenticatable
 {
+   use Notifiable;
+   protected $table = 'employees';
    protected $with = ['religion'];
-
    protected $fillable = [
-      'religion_id', 'blood', 'nik', 'name', 'sex', 'placeOfBirth', 'dateOfBirth'
+      'religion_id', 'blood', 'nik', 'name', 'sex', 'placeOfBirth', 'dateOfBirth', 'email', 'password',
    ];
+
+   public function getAuthPassword()
+   {
+     return $this->password;
+   }
 
    public function religion()
    {

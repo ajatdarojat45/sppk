@@ -7,7 +7,7 @@
       <div class="col-lg-10">
          <h2>Employee</h2>
          <ol class="breadcrumb">
-            <li><a href="#">Dashboard</a></li>
+            <li><a href="{{route('dashboard')}}">Dashboard</a></li>
             <li class="active"><strong>Employee</strong></li>
          </ol>
       </div>

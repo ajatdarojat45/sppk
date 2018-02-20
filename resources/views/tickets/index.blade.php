@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends(Auth::user()->mutationActive()->department->id == 1 ? 'layouts.admin' : 'layouts.employee')
 @section('title')
    Ticket - FIMZ Cemerlang Bangsa
 @endsection
@@ -9,6 +9,7 @@
          <ol class="breadcrumb">
             <li><a href="#">Dashboard</a></li>
             <li class="active"><strong>Ticket</strong></li>
+            <li class="active"><strong>{{$stat}}</strong></li>
          </ol>
       </div>
       <div class="col-lg-2">

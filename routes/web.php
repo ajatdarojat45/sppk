@@ -57,6 +57,7 @@ Route::get('/employee/{id}/detail', 'EmployeeController@detail')->name('employee
 Route::get('/employee/create', 'EmployeeController@create')->name('employee/create');
 Route::post('/employee/store', 'EmployeeController@store')->name('employee/store');
 Route::get('/employee/index', 'EmployeeController@index')->name('employee/index');
+Route::get('/employee/loginForm', 'EmployeeController@loginForm')->name('employee/loginForm');
 // invoice
 Route::get('/invoice/{id}/destroy', 'InvoiceController@destroy')->name('invoice/destroy');
 Route::post('/invoice/store', 'InvoiceController@store')->name('invoice/store');
@@ -78,5 +79,9 @@ Route::get('/pr/index', 'PrController@index')->name('pr/index');
 Route::get('/ticket/destroy/{id}', 'TicketController@destroy')->name('ticket/destroy');
 Route::get('/ticket/create', 'TicketController@create')->name('ticket/create');
 Route::post('/ticket/store', 'TicketController@store')->name('ticket/store');
-Route::get('/ticket/index', 'TicketController@index')->name('ticket/index');
+Route::get('/ticket/{stat}/index', 'TicketController@index')->name('ticket/index');
 Route::get('/ticket/process/{id}', 'TicketController@process')->name('ticket/process');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

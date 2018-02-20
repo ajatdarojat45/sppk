@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends(Auth::user()->mutationActive()->department->id == 1 ? 'layouts.admin' : 'layouts.employee')
 @section('title')
    Employee - FIMZ Cemerlang Bangsa
 @endsection
@@ -7,7 +7,7 @@
       <div class="col-lg-10">
          <h2>Employee</h2>
          <ol class="breadcrumb">
-            <li><a href="#">Dashboard</a></li>
+            <li><a href="{{route('dashboard')}}">Dashboard</a></li>
             <li><a href="{{route('employee/index')}}">Employee</a></li>
             <li class="active"><strong>Detail</strong></li>
             <li class="active"><strong>{{$employee->name}}</strong></li>

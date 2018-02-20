@@ -32,16 +32,16 @@
                <li class="nav-header">
                   <div class="dropdown profile-element">
                      <span>
-                        <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                        <img alt="image" class="img-circle" src="{{asset('inspinia/img/profile_small.jpg')}}" />
                      </span>
                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
                            <span class="block m-t-xs"> <strong class="font-bold">{{Auth::user()->name}}</strong></span>
-                           <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                           <span class="text-muted text-xs block">{{Auth::user()->mutationActive()->position->name}} <b class="caret"></b></span>
                         </span>
                      </a>
                      <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="{{route('employee/detail', Auth::user()->id)}}">Profile</a></li>
                         <li><a href="contacts.html">Contacts</a></li>
                         <li><a href="mailbox.html">Mailbox</a></li>
                         <li class="divider"></li>
@@ -56,29 +56,7 @@
                   <a href="{{route('dashboard')}}"><i class="fa fa-dashboard"></i> <span class="nav-label">Dashboard</span></a>
                </li>
                <li>
-                  <a href="index.html"><i class="fa fa-database"></i> <span class="nav-label">Data Master</span> <span class="fa arrow"></span></a>
-                  <ul class="nav nav-second-level collapse">
-                     <li><a href="{{route('branch/index')}}">Branch</a></li>
-                     <li><a href="{{route('department/index')}}">Department</a></li>
-                     <li><a href="{{route('duty/index')}}">Duty</a></li>
-                     <li><a href="{{route('position/index')}}">Position</a></li>
-                     <li><a href="{{route('componentCategory/index')}}">Component Category</a></li>
-                  </ul>
-               </li>
-               <li>
-                  <a href="{{route('employee/index')}}"><i class="fa fa-users"></i> <span class="nav-label">Employee</span></a>
-               </li>
-               <li>
-                  <a href="{{route('pr/index')}}"><i class="fa fa-file-pdf-o"></i> <span class="nav-label">Purchase Request</span></a>
-               </li>
-               <li>
-                  <a href="{{route('invoice/index')}}"><i class="fa fa-credit-card"></i> <span class="nav-label">Invoice</span></a>
-               </li>
-               <li>
-                  <a href="{{route('component/index')}}"><i class="fa fa-puzzle-piece"></i> <span class="nav-label">Component</span></a>
-               </li>
-               <li>
-                  <a href="{{route('computer/index')}}"><i class="fa fa-laptop"></i> <span class="nav-label">Computer</span></a>
+                  <a href="{{route('employee/detail', Auth::user()->id)}}"><i class="fa fa-user"></i> <span class="nav-label">Profile</span></a>
                </li>
                <li>
                   <a href="#"><i class="fa fa-ticket"></i> <span class="nav-label">Ticket</span> <span class="fa arrow"></span></a>
