@@ -32,6 +32,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['middleware' =>'HR'], function(){
+   // employee
+   Route::get('/employee/destroy/{id}', 'EmployeeController@destroy')->name('employee/destroy');
+   Route::get('/employee/create', 'EmployeeController@create')->name('employee/create');
+   Route::post('/employee/store', 'EmployeeController@store')->name('employee/store');
+   Route::get('/employee/index', 'EmployeeController@index')->name('employee/index');
+   Route::get('/employee/loginForm', 'EmployeeController@loginForm')->name('employee/loginForm');
+   // mutation
+   Route::post('/mutation/store', 'MutationController@store')->name('mutation/store');
+});
+
 Route::group(['middleware' =>'IT'], function(){
    // branch
    Route::get('/branch/destroy/{id}', 'BranchController@destroy')->name('branch/destroy');
@@ -65,18 +76,10 @@ Route::group(['middleware' =>'IT'], function(){
    Route::get('/duty/create', 'DutyController@create')->name('duty/create');
    Route::post('/duty/store', 'DutyController@store')->name('duty/store');
    Route::get('/duty/index', 'DutyController@index')->name('duty/index');
-   // employee
-   Route::get('/employee/destroy/{id}', 'EmployeeController@destroy')->name('employee/destroy');
-   Route::get('/employee/create', 'EmployeeController@create')->name('employee/create');
-   Route::post('/employee/store', 'EmployeeController@store')->name('employee/store');
-   Route::get('/employee/index', 'EmployeeController@index')->name('employee/index');
-   Route::get('/employee/loginForm', 'EmployeeController@loginForm')->name('employee/loginForm');
    // invoice
    Route::get('/invoice/{id}/destroy', 'InvoiceController@destroy')->name('invoice/destroy');
    Route::post('/invoice/store', 'InvoiceController@store')->name('invoice/store');
    Route::get('/invoice/index', 'InvoiceController@index')->name('invoice/index');
-   // mutation
-   Route::post('/mutation/store', 'MutationController@store')->name('mutation/store');
    // position
    Route::get('/position/destroy/{id}', 'PositionController@destroy')->name('position/destroy');
    Route::get('/position/create', 'PositionController@create')->name('position/create');

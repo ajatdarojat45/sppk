@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends(Auth::user()->mutationActive()->department->id == 1 ? 'layouts.admin' : Auth::user()->mutationActive()->department->id == 4 ? 'layouts.hr' : 'layouts.employee')
 @section('title')
    Employee - FIMZ Cemerlang Bangsa
 @endsection
